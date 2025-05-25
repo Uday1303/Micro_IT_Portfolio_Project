@@ -1,0 +1,50 @@
+import time
+
+# Define quiz questions
+quiz_data = [
+    {
+        "question": "What is the capital of France?",
+        "options": ["A. Berlin", "B. Paris", "C. Rome", "D. Madrid"],
+        "answer": "B"
+    },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["A. Earth", "B. Venus", "C. Mars", "D. Jupiter"],
+        "answer": "C"
+    },
+    {
+        "question": "Who wrote 'Romeo and Juliet'?",
+        "options": ["A. William Shakespeare", "B. Charles Dickens", "C. J.K. Rowling", "D. Mark Twain"],
+        "answer": "A"
+    }
+]
+
+def run_quiz(quiz_data):
+    score = 0
+    total = len(quiz_data)
+    
+    print("\nWelcome to the Quiz Game!")
+    print("---------------------------")
+    
+    for i, q in enumerate(quiz_data, 1):
+        print(f"\nQuestion {i}: {q['question']}")
+        for option in q['options']:
+            print(option)
+        
+        start_time = time.time()
+        user_answer = input("Your answer (A/B/C/D): ").strip().upper()
+        elapsed_time = time.time() - start_time
+        
+        if user_answer == q["answer"]:
+            print("✅ Correct!")
+            score += 1
+        else:
+            print(f"❌ Incorrect. The correct answer was: {q['answer']}")
+        
+        print(f"⏱️ Time taken: {elapsed_time:.2f} seconds")
+
+    print("\nQuiz Completed!")
+    print(f"Your Score: {score}/{total}")
+    print("Great job!" if score > total / 2 else "Better luck next time!")
+if __name__ == "__main__":
+   run_quiz(quiz_data)
